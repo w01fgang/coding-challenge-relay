@@ -1,0 +1,32 @@
+# User access role
+enum Role {
+  ADMIN
+  OPERATOR
+}
+
+# Current user
+type User {
+  id: ID!
+  name: String!
+  surname: String!
+  companyName: String!
+  role: Role!
+  createdAt: String!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  description: String!
+  price: Float!
+  createdAt: String!
+}
+
+type Viewer {
+  me: User!
+  products: [Product!]!
+}
+
+type Query {
+  viewer: Viewer!
+}

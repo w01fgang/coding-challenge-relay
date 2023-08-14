@@ -1,0 +1,6 @@
+__generated__
+__graphql__
+flow-typed
+.next
+.env.local
+node_modules

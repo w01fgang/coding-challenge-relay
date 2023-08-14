@@ -1,0 +1,454 @@
+// @flow strict
+import type { DateTime } from "luxon";
+import type { Photo, VehicleCategory } from "../../__graphql__/graphql";
+
+declare type DataLoader<T1, T2, T3> = $FlowFixMe;
+
+declare type Currency = "USD" | "EUR" | "RUB" | "GBP" | "CAD" | "CNY" | "JPY" | "AED" | "SAR" | "CHF";
+
+declare var hj: (...args: any[]) => void;
+declare var _gs: (...args: any[]) => void;
+
+export type DaysTariffType = {|
+  id: string,
+  name: string,
+  type: 'DaysTariff',
+  fromDays: number,
+  upToDays: number,
+  price: number,
+  unlimitedKilometers: boolean,
+  extraKmPrice: number,
+  baseKmDay: number,
+|}
+
+export type WeekdaysTariffType = {|
+  id: string,
+  name: string,
+  type: 'WeekdaysTariff',
+  fromWeekDay: number,
+  toWeekDay: number,
+  unlimitedKilometers: boolean,
+  extraKmPrice: number,
+  price: number,
+  validFromMonth: number,
+  validToMonth: number,
+  fromDate: string,
+  toDate: string,
+  baseKmDay: number,
+|}
+
+export type PeriodTariffType = {|
+  id: string,
+  name: string,
+  type: 'PeriodTariff',
+  price: number,
+  periodDays: number,
+  unlimitedKilometers: boolean,
+  extraKmPrice: number,
+  baseKmDay: number
+|}
+
+export type MonthlyTariffType = {|
+  id: string,
+  name: string,
+  type: 'MonthlyTariff',
+  price: number,
+  months: number,
+  unlimitedKilometers: boolean,
+  extraKmPrice: number,
+  baseKmDay: number
+|}
+
+export type VehicleTariff = {|
+  id: string,
+  type: PriceTariffType,
+  name: string,
+  price: number,
+  unlimitedKilometers: boolean,
+  extraKmPrice: number,
+  baseKmDay: number,
+  fromDays?: ?number,
+  upToDays?: ?number,
+  fromWeekDay?: ?number,
+  toWeekDay?: ?number,
+  validFromMonth?: ?number,
+  validToMonth?: ?number,
+  fromDate?: ?string,
+  toDate?: ?string,
+  periodDays?: ?number,
+  months?: ?number,
+|}
+
+type MessageDescriptor = {
+    id: string,
+    description: string,
+    defaultMessage: string,
+    ...
+  };
+
+export type Address = {|
+  id: string,
+  country: string,
+  state?: ?string,
+  city: string,
+  street?: ?string,
+  number?: ?string,
+  zipCode?: ?string,
+  formattedAddress: string,
+  addressNote?: ?string,
+|};
+
+export type DriverLicence = {|
+  +number: string,
+  +issueDate: string,
+  +validDate: string
+|};
+
+declare type Partner = {|
+  __typename?: 'Partner',
+  id: string,
+  name: string,
+  surname: string,
+  logo: ?string,
+  companyName: string,
+  contactPerson: string,
+  phone: string,
+  email: string,
+  website: ?string,
+  address: ?Address,
+  vat: string,
+  score: ?number,
+  note: string,
+|};
+
+declare type CreditCard = {|
+ +number: string,
+ +exp: string,
+ +cvv: string,
+ +holder: string,
+|};
+
+declare type Client = {
+ __typename?: 'Client',
+ id: string,
+ name?: string,
+ surname?: string,
+ birthDate?: Date,
+ phone?: string,
+ email?: string,
+ address?: Address,
+ language?: Locale,
+ documents?: $ReadOnlyArray<Photo>,
+ creditCards?: CreditCard[],
+ creditCardsPhotos?: Photo[],
+ note?: string,
+}
+
+declare type Courier = {|
+  id: string,
+  name: ?string,
+  surname: ?string,
+  phone: ?string,
+  email: ?string,
+  partner: ?Partner,
+  driverLicence: $ReadOnlyArray<Photo>,
+  passport: $ReadOnlyArray<Photo>,
+  documents: $ReadOnlyArray<Photo>,
+  orders: Array<string>,
+  deleted: boolean,
+|};
+
+declare type DatePickerProps = {|
+  +onChange: DateTime => void,
+  +value?: Date | DateTime,
+  +allowKeyboardControl?: boolean,
+  +animateYearScrolling?: boolean,
+  +autoOk?: boolean,
+  +disabled?: boolean,
+  +disableFuture?: boolean,
+  +disablePast?: boolean,
+  +disableToolbar?: boolean,
+  +emptyLabel?: string,
+  +format?: string,
+  +initialFocusedDate?: Date | DateTime,
+  +inputVariant?: "standard" | "outlined" | "filled",
+  +invalidDateMessage?: React$Node,
+  +invalidLabel?: string,
+  +labelFunc?: (date: DateTime, invalidLabel: string) => string,
+  +leftArrowButtonProps?: $FlowFixMe, // $Shape<IconButtonProps>
+  +leftArrowIcon?: React$Node,
+  +loadingIndicator?: React$Element<*>,
+  +maxDate?: DateTime | Date,
+  +maxDateMessage?: React$Node,
+  +minDate?: DateTime | Date,
+  +minDateMessage?: React$Node,
+  +onAccept?: DateTime => void,
+  +onClose?: () => void,
+  +onError?: (error: React$Node, value: DateTime) => void,
+  +onMonthChange?: DateTime => void,
+  +onOpen?: () => void,
+  +onYearChange?: DateTime => void,
+  +open?: boolean,
+  +openTo?: "date" | "year" | "month",
+  +orientation?: "portrait" | "landscape",
+  +PopoverProps?: $FlowFixMe, // $Shape<PopoverProps>
+  +readOnly?: boolean,
+  +renderDay?: (
+    day: DateTime,
+    selectedDate: DateTime,
+    dayInCurrentMonth: boolean,
+    dayComponent: React$Element<*>
+  ) => React$Element<*>,
+  +rightArrowButtonProps?: $FlowFixMe, // $Shape<IconButtonProps>
+  +rightArrowIcon?: React$Node,
+  +shouldDisableDate?: DateTime => void,
+  +strictCompareDates?: boolean,
+  +TextFieldComponent?: React$AbstractComponent<$FlowFixMe, mixed>, // TextFieldProps
+  +ToolbarComponent?: React$AbstractComponent<$FlowFixMe, mixed>, // ToolbarComponentProps
+  +variant?: "dialog" | "inline" | "static",
+  +views?: Array<"year" | "date" | "month">
+|};
+
+declare type Status =
+  | "reserved"
+  | "requested"
+  | "maintenance"
+  | "available"
+  | "nearRent";
+declare type OrderStatus =
+  | "canceled"
+  | "requested"
+  | "maintenance"
+  | "confirmed"
+  | "completed";
+declare type Role =
+  | "ADMIN"
+  | "OPERATOR"
+  | "PARTNER"
+  | "DRIVER";
+declare type RoleId =
+  | "custom_admin"
+  | "operator"
+  | "partner"
+  | "driver"
+declare type PaymentType =
+  |"prepayment"
+  |"payment"
+  |"deposit"
+  |"return_deposit"
+  |"refund"
+declare type PaymentMethod =
+  |"cash"
+  |"card"
+  |"bank_transfer"
+  |"paypal"
+  |"stripe"
+  |"crypto"
+  |"payment_link"
+  | "invoice"
+  |"other"
+declare type RootRoleId =
+  | "user"
+
+declare type RootUser = {|
+  email: string,
+  phone: string,
+  name: string,
+  surname: string,
+  companies: Array<{
+    companyName: string,
+    companyId: string,
+    role: Role,
+    id: string,
+    logo: ?string,
+  }>
+|}
+
+declare type ID = string;
+
+declare type ExtraServices = {|
+  +id: ID,
+  +title: string,
+  +description: ?string,
+  +price: number,
+  +amount: ?number,
+|};
+
+declare type Insurance = {|
+  id: ID,
+  note: string,
+  title: string,
+  price: number,
+  franchise: number
+|};
+
+declare type Passport = {|
+  +number: string,
+  +issueDate: string,
+  +validDate: string,
+|}
+
+declare type User = {|
+  +id: string,
+  +name: string,
+  +surname: string,
+  +role: Role,
+  +createdAt: string,
+  +email: string,
+  +phone: string,
+  +address?: ?Address,
+  +vatin?: string,
+  +password?: string,
+  +notifications: {
+    newReservation: { sms: boolean, system: boolean, email: boolean },
+    changingStatus: { sms: boolean, system: boolean, email: boolean },
+    pickUpFinish: { sms: boolean, system: boolean, email: boolean },
+    dropOffFinish: { sms: boolean, system: boolean, email: boolean }
+  },
+  isAdmin: boolean,
+  +calendarSettings: {
+    showDeposit: boolean,
+    showExtrakmPrice: boolean,
+    showTotalPrice: boolean,
+    showKmIncluded: boolean,
+    showCommission: boolean,
+    showTotalProfit: boolean,
+    showBlockDepositDate: boolean,
+    showVehicleOwner: boolean,
+    showPartner: boolean,
+    showPayments: boolean,
+    showPartnerNameInTitle: boolean
+  },
+  language: Locale,
+|};
+
+declare type ArrayElement = <T>(arr: $ReadOnlyArray<T>) => T;
+
+declare var __DEV__: boolean;
+
+declare type StepState = {|
+  title: string,
+  success: boolean,
+  active: boolean,
+  button: {
+    active: {
+      title: string,
+    },
+    noActive: {
+      title: string,
+    },
+  },
+|}
+
+declare type FleetType =  'ALL' | 'OWN' | 'PARTNERS' | 'DELETED';
+
+declare type RootCompany = {|
+  id: string | Expr,
+  companyName: string,
+  companyId: string,
+  role: Role,
+  deleted?: boolean,
+|}
+
+declare type GlobalUser = {|
+  email: string,
+  name: string,
+  surname: string,
+  phone: string,
+  companies: Array<RootCompany>
+|}
+
+declare type TransmissionType = 'automatic' | 'manual';
+
+declare type PartnerVehiclesFilter = {
+  search?: string,
+  color?: string,
+  partner?: string,
+  brand?: string,
+  year?: number,
+  category?: ?Array<VehicleCategory>,
+  transmission?: TransmissionType
+}
+
+type Delivery = {|
+  id?: string,
+  start: ?Address,
+  finish: ?Address,
+  distance: ?number,
+  price: number,
+  setManual?: boolean,
+  coeficient: number,
+  double: boolean,
+|}
+
+type CalculatorVehiclesFilter = {
+  search?: string,
+  colors?: Array<string>,
+  partners?: Array<string>,
+  brands?: Array<string>,
+  categories?: Array<VehicleCategory>,
+}
+
+type Company = {
+  id: ID,
+  name: string,
+  address: Address,
+  email: string,
+  phone: string,
+  logo: Photo,
+  additional: string,
+  website: string,
+  vat: string,
+  bank: Bank,
+  account: Account,
+  default: boolean,
+  deleted: boolean,
+  language: Locale,
+  cargosCredentials: CargosCredentials,
+}
+
+type CargosCredentials = {
+  username: string,
+  password: string,
+  apiKey: string,
+  offices: [Office]
+}
+
+type CustomPrice = {
+  id:string,
+  price:number,
+}
+
+declare type CalculatorForm = {
+  selectedVehicles: Array<Vehicle>,
+  openSelector: boolean,
+  loading: boolean,
+  activeTab: 'CARS_TAB' | 'CALC_TAB',
+  dates: {
+    from: string,
+    to: string,
+  },
+  vehiclesFilter: CalculatorVehiclesFilter,
+  fleetType: FleetType,
+  deliveries: Array<Delivery>,
+  deliveryPrice: number,
+  calculatedVehicles: Array<Vehicle>,
+  selectedToCalculate: Array<Vehicle>,
+  percents: string,
+  value: string,
+  included: number,
+  freeExtra: boolean,
+  unlimitedKilometers: boolean,
+  selectedCompany: Company | null,
+  customPrices:Array<CustomPrice>
+}
+
+declare type AnalyticsForm = {|
+  openSelector: boolean,
+  loading: boolean,
+  dates: ?{
+    from: string,
+    to: string,
+  },
+  fleetType: FleetType,
+|}

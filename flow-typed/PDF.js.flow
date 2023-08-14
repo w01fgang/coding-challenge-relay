@@ -1,0 +1,30 @@
+// @flow strict
+declare type CustomerPDF = {|
+  +surname: string,
+  +name: string,
+  +companyName: string,
+  +vat: ?string,
+  +address: ?$ReadOnly<Address>,
+  +email: ?string,
+  +phone: ?string,
+  +creditCards: $ReadOnlyArray<$ReadOnly<CreditCard>>,
+  +fiscalCode?: null, // this only exists on Client, here it always null
+  +vat: ?string,
+|} | {|
+  +companyName: null,
+  +name: string,
+  +surname: string,
+  +address: ?$ReadOnly<Address>,
+  +email: ?string,
+  +phone: ?string,
+  +creditCards: $ReadOnlyArray<$ReadOnly<CreditCard>>,
+  +driverLicence: ?{|
+    +number: string,
+    +issueDate: string,
+    +validDate: string
+  |},
+  +birthDate: ?string,
+  +language: ?string,
+  +fiscalCode: ?string,
+  +vat: ?string,
+|};
