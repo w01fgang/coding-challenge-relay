@@ -1,4 +1,4 @@
-### Senior Full-Stack Engineer Task: Product Management System Enhancement
+### Front-end Engineer Task: Product Management System Enhancement
 **Objective:** Enhance an existing Product Management System (PMS) to allow users to add, edit, and manage product listings seamlessly. We're expecting a mobile-first, responsive design, with a polished user experience and optimized performance.
 
 #### 1. Initial Setup:
