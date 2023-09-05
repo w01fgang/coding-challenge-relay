@@ -38,10 +38,39 @@ input CreateProductInput {
 type Viewer {
   me: User!
   products: [Product!]!
+  product(id: ID!): Product
 }
 
 type Query {
   viewer: Viewer!
+  product(id: ID!): Product
+}
+
+type Mutation {
+  addProduct(input: AddProductInput!): AddProductPayload
+  editProduct(input: EditProductInput!): EditProductPayload
+}
+
+input AddProductInput {
+  name: String!
+  description: String!
+  price: Float!
+}
+
+input EditProductInput {
+  id: ID!
+  name: String!
+  description: String!
+  price: Float!
+  createdAt: String
+}
+
+type AddProductPayload {
+  product: Product
+}
+
+type EditProductPayload {
+  product: Product
 }
 
 type Mutation {
