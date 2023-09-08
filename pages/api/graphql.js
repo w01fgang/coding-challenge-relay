@@ -1,10 +1,8 @@
 // @flow
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { graphqlHTTP } from 'express-graphql';
-// $FlowFixMe
 import schemaString from './mock.graphql';
 import * as products from './products';
-
 const viewer = {
   me: () => ({
     id: 9287364982716489723,
@@ -16,12 +14,22 @@ const viewer = {
   }),
   products: () => products.get(),
 };
-
 const resolvers = {
   Query: {
     viewer: () => viewer,
   },
+
+  Mutation: {
+   addProduct(_, {input}){
+    return products.add(input)
+   },
+
+   editProduct(_, {productId, input}){
+    return products.edit(productId, input)
+   }
+  },
 }
+
 
 const schema = makeExecutableSchema({ typeDefs: schemaString, resolvers });
 
@@ -37,5 +45,4 @@ const handler =  (req: NextApiRequest, res: NextApiResponse<any>) => {
     }),
   })(req, res);
 };
-
 export default handler;

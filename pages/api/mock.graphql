@@ -3,7 +3,6 @@ enum Role {
   ADMIN
   OPERATOR
 }
-
 # Current user
 type User {
   id: ID!
@@ -13,20 +12,42 @@ type User {
   role: Role!
   createdAt: String!
 }
-
 type Product {
   id: ID!
   name: String!
   description: String!
   price: Float!
   createdAt: String!
+  category: String!
 }
 
+input UpdateProductInput {
+  id: ID!
+  name: String
+  description: String
+  price: Float
+}
+input CreateProductInput {
+  name: String!
+  description: String!
+  price: Float!
+}
 type Viewer {
   me: User!
   products: [Product!]!
 }
-
 type Query {
   viewer: Viewer!
+}
+
+input ProductInput {
+  name: String
+  description: String
+  price: Float
+  category: String
+}
+
+type Mutation {
+  addProduct(input: ProductInput!): Product
+  editProduct(productId: ID!, input: ProductInput!): Product
 }
