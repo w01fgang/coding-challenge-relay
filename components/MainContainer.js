@@ -1,7 +1,5 @@
 // @flow strict
-import {
-  memo, useCallback, useState, useEffect,
-} from 'react';
+import { memo, useCallback, useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import Container from '@material-ui/core/Container';
@@ -15,15 +13,11 @@ type Props = {
 const MainContainer = ({ children }: Props): React$Node => {
   return (
     <>
-      <AppBar position="static">
-        <Toolbar>
-          Header
-        </Toolbar>
+      <AppBar position='static'>
+        <Toolbar>Header</Toolbar>
       </AppBar>
 
-      <Container maxWidth="xl">
-        {children}
-      </Container>
+      <Container maxWidth='xl'>{children}</Container>
     </>
   );
 };

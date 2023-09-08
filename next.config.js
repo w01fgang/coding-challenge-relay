@@ -4,6 +4,10 @@ const withGraphql = require('next-plugin-graphql');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: false,
+  webpack: (config) => {
+    config.resolve.preferRelative = true;
+    return config;
+  },
 };
 
 module.exports = withGraphql(nextConfig);

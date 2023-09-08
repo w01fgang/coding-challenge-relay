@@ -6,7 +6,10 @@ import { QueryRenderer } from 'react-relay';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
-import type { NextComponentType, NextPageContext } from 'next/next-server/lib/utils'; //eslint-disable-line
+import type {
+  NextComponentType,
+  NextPageContext,
+} from 'next/next-server/lib/utils'; //eslint-disable-line
 
 import theme from '../lib/theme';
 import { initEnvironment, createEnvironment } from '../lib/createEnvironment';
@@ -27,7 +30,7 @@ type InitialProps = {
   Component: NextComponentType<NextPageContext, $FlowFixMe, $FlowFixMe>,
   pageProps: $FlowFixMe,
   locale: string,
-  messages: { [key: string]: string; },
+  messages: { [key: string]: string },
   relayData: $FlowFixMe,
   token: string,
   records: $FlowFixMe,
@@ -87,11 +90,11 @@ export default class MyApp extends App<InitialProps> {
         locale,
         messages,
       },
-      cache,
+      cache
     );
 
     if (!Component.query) {
-      return <Component {...pageProps} locale={locale} />
+      return <Component {...pageProps} locale={locale} />;
     }
 
     const environment = createEnvironment(
@@ -102,43 +105,47 @@ export default class MyApp extends App<InitialProps> {
       JSON.stringify({
         queryID: Component.query.params.name,
         variables: pageProps.variables || {},
-      }),
+      })
     );
 
     return (
       <RawIntlProvider value={intl}>
         <Head>
-          <meta charSet="utf-8" />
+          <meta charSet='utf-8' />
           <title>Products</title>
           <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+            name='viewport'
+            content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'
           />
         </Head>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <QueryRenderer
-            environment={environment}
-            query={Component.query}
-            variables={pageProps.variables}
-            render={(params) => {
-              const { error, props } = params;
-              if (props && props.viewer) {
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <QueryRenderer
+              environment={environment}
+              query={Component.query}
+              variables={pageProps.variables}
+              render={(params) => {
+                const { error, props } = params;
+                if (props && props.viewer) {
+                  return (
+                    <Suspense fallback={null}>
+                      <Component
+                        {...pageProps}
+                        environment={environment}
+                        {...props}
+                        locale={locale}
+                      />
+                    </Suspense>
+                  );
+                }
 
-                return (
-                  <Suspense fallback={null}>
-                    <Component {...pageProps} environment={environment} {...props} locale={locale} />
-                  </Suspense>
-                );
-              }
-
-              if (error) {
-                return "Error!";
-              }
-              return "Loading...";
-            }}
-          />
-        </ThemeProvider>
+                if (error) {
+                  return 'Error!';
+                }
+                return 'Loading...';
+              }}
+            />
+          </ThemeProvider>
       </RawIntlProvider>
     );
   }

@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "relay": "relay-compiler",
+    "flow": "flow",
     "relay:watch": "yarn relay --watch"
   },
   "dependencies": {
@@ -38,11 +39,12 @@
     "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "@babel/plugin-transform-flow-strip-types": "^7.12.10",
+    "@babel/preset-flow": "^7.22.15",
     "@babel/register": "^7.11.5",
     "babel-loader": "^8.1.0",
-    "babel-plugin-inline-react-svg": "^1.1.1",
+    "babel-plugin-inline-react-svg": "^2.0.2",
     "babel-plugin-react-intl": "^8.2.25",
-    "babel-plugin-relay": "11.0.2",
+    "babel-plugin-relay": "^11.0.2",
     "eslint": "8.47.0",
     "eslint-config-next": "latest",
     "flow-bin": "^0.142.0",
