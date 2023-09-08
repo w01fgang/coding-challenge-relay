@@ -20,6 +20,7 @@ type Product {
   description: String!
   price: Float!
   createdAt: String!
+  category: String!
 }
 
 input UpdateProductInput {
@@ -44,7 +45,14 @@ type Query {
   viewer: Viewer!
 }
 
+input ProductInput {
+  name: String
+  description: String
+  price: Float
+  category: String
+}
+
 type Mutation {
-  updateProduct(input: UpdateProductInput!): Product!
-  createProduct(input: CreateProductInput!): Product!
+  addProduct(input: ProductInput!): Product
+  editProduct(productId: ID!, input: ProductInput!): Product
 }

@@ -21,9 +21,16 @@ const resolvers = {
   Query: {
     viewer: () => viewer,
   },
+
   Mutation: {
-    // TODO: Implement mutations
-  }
+   addProduct(_, {input}){
+    return products.add(input)
+   },
+
+   editProduct(_, {productId, input}){
+    return products.edit(productId, input)
+   }
+  },
 }
 
 const schema = makeExecutableSchema({ typeDefs: schemaString, resolvers });

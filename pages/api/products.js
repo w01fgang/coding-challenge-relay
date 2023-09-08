@@ -22,5 +22,29 @@ export const products: Product[] = new Array(9).fill(1).map((_, i) => ({
 export const get = () => products;
 
 export const add = (product: Object) => {
+
+  product.id = products.length + 1
+  product.createdAt = new Date().toISOString()
+
+  // console.log(newProduct, 'newProduct')
+  
   products.push(product);
+
+  return product
 };
+
+export const edit = (productId: Number, newData: Object)=>{
+  let product = products.filter(product =>  product.id == productId)
+
+  if (!product) {
+    throw new Error(`Couldn’t find product with id ${productId}`);
+  }
+
+  product = {...product[0], ...newData}
+
+  products.splice(productId - 1, 1, product)
+  // console.log(product, 'product')
+
+  return product
+
+}
