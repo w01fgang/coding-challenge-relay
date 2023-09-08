@@ -1,29 +1,41 @@
 // @flow
-import React, { Component } from 'react';
-import { graphql } from 'react-relay';
-import type { pages_indexQueryResponse } from '../__generated__/pages_indexQuery.graphql';
+import React, { useEffect } from "react";
+import { graphql } from "react-relay";
+import type { pages_indexQueryResponse } from "../__generated__/pages_indexQuery.graphql";
 
-import Card from "@material-ui/core/Card";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import ProductCard from "../components/ProductCard";
+import MainContainer from "../components/MainContainer";
+import { Box, Typography, useMediaQuery } from "@mui/material";
+import theme from "../lib/theme";
 
 type Props = {
-  ...pages_indexQueryResponse;
+  ...pages_indexQueryResponse,
 };
 
 function Index(props: Props) {
+  const isMobile = useMediaQuery("(max-width:480px)");
+  const isTablet = useMediaQuery("(max-width:760px)");
+
   return (
-    <Box>
-      <Box display="flex" alignItems="center" justifyContent="center" m={4}>
-        <Typography variant="h1">Products</Typography>
+    <MainContainer>
+      <Box>
+        <Box m={4} className="header-list">
+          <Typography
+            variant={isMobile ? (isTablet ? "h5" : "h4") : "h2"}
+            sx={{ backgroundColor: theme.typography.h2 }}
+          >
+            Welcome Home
+          </Typography>
+
+          <Typography variant={isMobile ? (isTablet ? "h5" : "h4") : "h3"}>
+            <pre>Please Choose {"\n"}Your Variant</pre>
+            {isMobile && isTablet ? "\n" : ""}
+            <Typography sx={{ backgroundColor: theme.typography.h3 }}>
+              On Right board
+            </Typography>
+          </Typography>
+        </Box>
       </Box>
-      <Box display="flex" flexWrap="wrap">
-        {props.viewer.products.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </Box>
-    </Box>
+    </MainContainer>
   );
 }
 

@@ -21,6 +21,9 @@ const resolvers = {
   Query: {
     viewer: () => viewer,
   },
+  Mutation: {
+    // TODO: Implement mutations
+  }
 }
 
 const schema = makeExecutableSchema({ typeDefs: schemaString, resolvers });

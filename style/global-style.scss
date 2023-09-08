@@ -1,0 +1,152 @@
+
+
+.header-list {
+  top: 33%;
+
+  position: absolute;
+
+  @media (max-width: 768px) {
+    top: 33%;
+    left: 0;
+    right: 10px;
+  }
+
+  @media (max-width: 480px) {
+      top: 33%;
+      left: 0;
+      right: 10px;
+  }
+
+}
+
+
+.home {
+  background-color: #808aae;
+  height: 500px;
+}
+.form-create {
+  border-radius: 20px;
+  margin-top: 16rem;
+  max-width: 591px;
+
+  @media (max-width: 480px) {
+   width: 236px;
+  }
+  @media (max-width: 780px) {
+    width: 464px;
+    margin: 10px 16px;
+    padding: 0;
+
+  }
+
+  & button {
+    @media (max-width: 480px) {
+      margin: 20px 85px;
+    }
+
+    margin: 30px 185px;
+
+
+  }
+}
+
+.links {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Eras Light ITC";
+  color: white;
+
+  &:hover {
+    color: #000000;
+    text-decoration: underline;
+  }
+}
+
+.modal-heandler {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  width: 400px;
+  background-color: #104156;;
+  border: 2px solid #000;
+  box-shadow: 5px 5px 5px #f4f4ef;
+  padding: 4px;
+  min-height: 300px;
+
+  & button {
+    top: 9rem;
+    position: relative;
+    font-family: "Eras Light ITC";
+
+    &:hover {
+      background-color: #df4678;
+      color: white;
+      border: 3px solid #fffcfc;
+      box-shadow: 5px 5px 5px #f0f0eb;
+    }
+  }
+}
+
+.product-card {
+  width: 50%;
+  background-color: #2f86e3;
+
+  margin: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+
+  &:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #e0094f;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child:hover{
+      color: white;
+    }
+
+    & button {
+      margin: 10px 10px;
+    }
+  }
+
+  & button{
+    margin: 28px 38px;
+    background: gray;
+  }
+
+
+
+  &__cards {
+    background-color: #2f86e3;
+    box-shadow: 10px 5px 5px #2f86e3;
+    font-family: "Franklin Gothic Demi";
+    margin: 10px;
+    border-radius: 10px;
+  }
+}
+
+.edit-cards {
+  line-height: 25px;
+  font-size: 22px;
+  color: white;
+  margin: 5px;
+  height: 300px;
+
+  & pre {
+    white-space: pre-wrap;
+    width: 32ch;
+    float: left;
+    margin: .5em;
+    min-height: 7em;
+  }
+}

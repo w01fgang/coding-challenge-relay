@@ -1,4 +1,4 @@
-### Senior Full-Stack Engineer Task: Product Management System Enhancement
+### Front-end Engineer Task: Product Management System Enhancement
 **Objective:** Enhance an existing Product Management System (PMS) to allow users to add, edit, and manage product listings seamlessly. We're expecting a mobile-first, responsive design, with a polished user experience and optimized performance.
 
 #### 1. Initial Setup:
@@ -31,9 +31,4 @@ Utilize React Relay to manage data, ensuring efficient communication between the
 #### 5. Prioritize Responsive Design:
 Ensure a mobile-first approach and that components adapt elegantly to desktop sizes. Test your solution across varied devices: iPhone 13, iPad Air, MacBook 13”, and iMac 27”.
 
-#### 6. Advanced Testing:
-Implement unit tests for components, hooks, and other functionalities you introduce.
-As a senior role, comprehensive tests are crucial; ensure both primary scenarios and edge cases are considered.
-
-**Note:** Given your senior position, we're keen on evaluating not only the features you implement but also your coding approach, design decisions, and problem-solving skills. Strive for clean, maintainable code that embodies advanced engineering best practices.
 Wishing you success!

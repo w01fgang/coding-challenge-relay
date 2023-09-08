@@ -184,7 +184,7 @@ declare interface $algoliasearch$ClientLite {
 declare module "algoliasearch" {
   declare type Client = $algoliasearch$Client;
   declare type ClientOptions = $algoliasearch$ClientOptions;
-  declare type Index = $algoliasearch$Index;
+  declare type Id = $algoliasearch$Index;
   declare type Settings = $algoliasearch$Settings;
   declare module.exports: (
     applicationID: string,
@@ -196,7 +196,7 @@ declare module "algoliasearch" {
 declare module "algoliasearch/reactnative" {
   declare type Client = $algoliasearch$Client;
   declare type ClientOptions = $algoliasearch$ClientOptions;
-  declare type Index = $algoliasearch$Index;
+  declare type Id = $algoliasearch$Index;
   declare type Settings = $algoliasearch$Settings;
   declare module.exports: (
     applicationID: string,
@@ -208,7 +208,7 @@ declare module "algoliasearch/reactnative" {
 declare module "algoliasearch/lite" {
   declare type Client = $algoliasearch$ClientLite;
   declare type ClientOptions = $algoliasearch$ClientOptions;
-  declare type Index = $algoliasearch$IndexLite;
+  declare type Id = $algoliasearch$IndexLite;
   declare type Settings = $algoliasearch$Settings;
   declare module.exports: (
     applicationID: string,
