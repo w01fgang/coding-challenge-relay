@@ -28,4 +28,4 @@ const MainContainer = ({ children }: Props): React$Node => {
   );
 };
 
-export default (memo<Props>(MainContainer): React$AbstractComponent<Props, mixed, React$Node>);
+export default (memo<Props>(MainContainer): React$AbstractComponent<Props, mixed>);

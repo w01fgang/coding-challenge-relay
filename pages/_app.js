@@ -6,7 +6,7 @@ import { QueryRenderer } from 'react-relay';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
-import type { NextComponentType, NextPageContext } from 'next/next-server/lib/utils'; //eslint-disable-line
+import type { NextComponentType, NextPageContext } from 'next/next-server/lib/utils';
 
 import theme from '../lib/theme';
 import { initEnvironment, createEnvironment } from '../lib/createEnvironment';
@@ -41,9 +41,7 @@ type Props = {
 export default class MyApp extends App<InitialProps> {
   static async getInitialProps({ Component, ctx }: Props): $FlowFixMe {
     let pageProps = {};
-    // $FlowFixMe[prop-missing]
     if (Component.getInitialProps) {
-      // $FlowFixMe[not-a-function]
       pageProps = await Component.getInitialProps(ctx);
     }
 
@@ -53,7 +51,7 @@ export default class MyApp extends App<InitialProps> {
     let locale = 'en';
     let messages = {};
     if (req) {
-      // $FlowFixMe
+      // $FlowFixMe[untyped-import]
       const getLang = require('../lib/getLang').default; // eslint-disable-line global-require
       ({ locale, messages } = getLang(req));
     } else if (typeof window !== 'undefined') {
@@ -99,10 +97,6 @@ export default class MyApp extends App<InitialProps> {
         relayData,
         records,
       },
-      JSON.stringify({
-        queryID: Component.query.params.name,
-        variables: pageProps.variables || {},
-      }),
     );
 
     return (

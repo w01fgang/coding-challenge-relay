@@ -1,7 +1,7 @@
 // @flow
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { graphqlHTTP } from 'express-graphql';
-// $FlowFixMe
+// $FlowFixMe[cannot-resolve-module]
 import schemaString from './mock.graphql';
 import * as products from './products';
 
