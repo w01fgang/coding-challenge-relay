@@ -6,30 +6,24 @@ A boilerplate has been provided which is pre-configured with Next.js, Flow, and 
 
 #### 2. Define Routes and Data Structure:
 **Products should consist of:** ID, name, a brief description, price, and category.
-**Implement two new routes:**
+
+**Implement a new route:**
 - "/create" - for adding new products.
-- "/edit/:id" - for editing existing products.
 
 #### 3. UI Enhancement with Material-UI:
 **Homepage:**
-Integrate a feature on each product card that allows users to open the edit form directly from the home page.
+A user should be able to go to the product creation page. Implement it as you think is the best.
 
 **Product Creation Form:**
 Craft a form to allow users to add new products.
 Ensure the form is intuitive, featuring fields for all product attributes and error handling for incorrect or missing inputs.
 
-**Product Edit Form:**
-Implement a form enabling users to edit an existing product's details. This form should pre-populate with the product's current details.
-Make sure the form is intuitive, with fields for all product attributes and error handling.
-
 #### 4. Enhance Data Management using React-Relay and GraphQL:
-**Design GraphQL mutations and queries to:**
-- Add a new product.
-- Update an existing product using its ID.
-Utilize React Relay to manage data, ensuring efficient communication between the GraphQL server and React components, especially for the mutations you implement.
+**Design GraphQL mutations and query to add a new product.**
+Utilize React Relay to manage data, ensuring efficient communication between the GraphQL server and React components, especially for the mutation you implement.
 
 #### 5. Prioritize Responsive Design:
-Ensure a mobile-first approach and that components adapt elegantly to desktop sizes. Test your solution across varied devices: iPhone 13, iPad Air, MacBook 13”, and iMac 27”.
+Ensure a mobile-first approach and that components adapt elegantly to desktop sizes. Test your solution across varied devices: iPhone X, MacBook 13”.
 
 #### 6. Advanced Testing:
 Implement unit tests for components, hooks, and other functionalities you introduce.
@@ -37,3 +31,7 @@ As a senior role, comprehensive tests are crucial; ensure both primary scenarios
 
 **Note:** Given your senior position, we're keen on evaluating not only the features you implement but also your coding approach, design decisions, and problem-solving skills. Strive for clean, maintainable code that embodies advanced engineering best practices.
 Wishing you success!
+
+P.S.
+If you are new to Flow Type then we highly recommend to go to Editors section to install the plugin
+https://flow.org/en/docs/editors/
