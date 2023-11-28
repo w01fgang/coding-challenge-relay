@@ -29,6 +29,16 @@ Ensure a mobile-first approach and that components adapt elegantly to desktop si
 Implement unit tests for components, hooks, and other functionalities you introduce.
 As a senior role, comprehensive tests are crucial; ensure both primary scenarios and edge cases are considered.
 
+#### Tech Stack
+
+This project uses the following technologies:
+
+- [Next.js](https://nextjs.org/) for the framework.
+- [Flow](https://flow.org/) for static type checking.
+- [GraphQL](https://graphql.org/) for the API.
+- [React Relay](https://relay.dev/) for efficient data fetching.
+- [Material-UI](https://material-ui.com/) for the UI components.
+
 **Note:** Given your senior position, we're keen on evaluating not only the features you implement but also your coding approach, design decisions, and problem-solving skills. Strive for clean, maintainable code that embodies advanced engineering best practices.
 Wishing you success!
 
